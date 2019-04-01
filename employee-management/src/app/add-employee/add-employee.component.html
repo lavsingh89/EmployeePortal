@@ -1,0 +1,60 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Employee</h2>
+  <form #myForm="ngForm" (ngSubmit)="register(myForm)" >
+    
+    <div class="form-group">
+      <label for="name">First Name *:</label>
+      <input mdInput type="name" [(ngModel)]="user.firstName" placeholder="First Name" name="firstname" class="form-control" id="firstname" 
+      required minlength="3" #firstname="ngModel" pattern="[a-zA-Z]+" ng-pattern-restrict>
+
+      <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+        class="alert alert-danger">
+        First Name is required field and can contain alphabet only.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Last Name :</label>
+      <input type="name" [(ngModel)]="user.lastName" placeholder="Last Name" name="lastname" class="form-control" id="lastname" #lastname="ngModel" pattern="[a-zA-Z]+" ng-pattern-restrict>
+      <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+        class="alert alert-danger">
+        Name can only composed of alphabets.
+      </div>
+     </div>
+     
+    <div class="form-group">
+      <label for="name">Date of birth * :</label>
+      <input type="date" [(ngModel)]="user.dateOfBirth" placeholder="Date of birth" name="dateOfBirth" class="form-control" id="dateOfBirth" required #dateOfBirth="ngModel">
+      <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)"
+        class="alert alert-danger">
+        Date of Birth cannot be empty.
+      </div>
+      
+      <show-errors [control]="dateOfBirth"></show-errors>
+    </div>
+    
+  <div class="form-group">
+    <label for="gender">Gender * &nbsp;&nbsp;</label>
+    <select placeholder="Select Gender" name="gender" [(ngModel)]="user.gender" #gender="ngModel" [ngClass]="{ 'is-invalid': myForm.submitted && gender.invalid }" required>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="department">Department * &nbsp;&nbsp;</label>
+    <select placeholder="Select Department" name="department" [(ngModel)]="user.department" #department="ngModel" [ngClass]="{ 'is-invalid': myForm.submitted && department.invalid }" required>
+      <option>HR</option>
+      <option>Engineering</option>
+      <option>Sales</option>
+    </select>
+  </div> 
+    
+    <show-errors [control]="myForm"></show-errors>
+
+    <button type="submit" class="btn btn-primary float-right" [disabled]="myForm.invalid">Register</button>
+    <br>
+    <p> All * fields are required fields.</p>
+  </form>
+  </div>
