@@ -13,7 +13,7 @@ This project has two main components
 - Angular 7
 
 ###  Installation
-1. Clone the project by entering `git clone`
+1. Clone the project by entering `git clone https://github.com/lavsingh89/EmployeePortal.git`
 
 ### Deployment
 
